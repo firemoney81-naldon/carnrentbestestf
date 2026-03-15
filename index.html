@@ -1,23 +1,866 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+        <!-- JSON-LD Structured Data for SEO -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "카이엔리스 가격 비교견적 사이트",
+            "url": "https://nawaracar.com",
+            "description": "2026년 최신 포르쉐 카이엔리스 가격을 주요 리스사별로 비교하고 합리적인 견적을 받으세요. 카이엔리스 장단점, 월납입료 평균, 할인 혜택, 신규 가입 순위 등 전문적인 정보를 제공합니다.",
+            "publisher": {
+                "@type": "Organization",
+                "name": "카모아",
+                "email": "dr@drsoft.co.kr"
+            },
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://nawaracar.com/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            },
+            "speakable": {
+                "@type": "SpeakableSpecification",
+                "cssSelector": [".banner-content h2", ".section-title h2", ".mainTextCell"]
+            }
+        }
+        </script>
+
+        <!-- Preconnect to external resources -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+        <!-- Custom CSS Styles -->
+        <style>
+            /* Base Styling and Reset */
+            body { font-family: 'Noto Sans KR', sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; background-color: #f7f9fc; }
+            h1, h2, h3, h4 { margin-top: 0; font-weight: 700; }
+            a { text-decoration: none; color: inherit; }
+            ul, ol { list-style: none; padding-left: 0; }
+            img { max-width: 100%; height: auto; display: block; }
+
+            /* Color Palette for Soft, Professional Look (Luxury/Prestige theme) */
+            :root {
+                --primary-color: #0c4a6e; /* Deep Blue Gray for Luxury */
+                --secondary-color: #2e7a9e; /* Muted Blue Accent */
+                --accent-color: #c99e1a; /* Gold Accent for Porsche */
+                --text-color: #333333;
+                --light-bg: #ffffff;
+                --dark-bg: #f7f9fc;
+                --border-color: #e0e0e0;
+            }
+
+            /* Layout and Typography */
+            .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+            .header { background-color: var(--primary-color); padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+            .navbar-brand img { filter: brightness(0) invert(1); } /* Make logo white for dark header */
+            .banner-area-5 { background: linear-gradient(to right, #eaf4ff, #ffffff); padding: 60px 0; }
+            .banner-content h2 { font-size: 3rem; font-weight: 900; line-height: 1.3; color: var(--text-color); }
+            .banner-content span.highlight { color: var(--accent-color); }
+            .section-title h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1.5rem; }
+            .feature-area-3 { padding: 80px 0; background-color: var(--light-bg); }
+            .mainFormWrap { background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+            .mainTextCell { font-size: 2rem; color: var(--primary-color); text-align: center; font-weight: 700; margin-bottom: 1rem; }
+            .subTextCell { font-size: 1.2rem; text-align: center; color: var(--text-color); margin-bottom: 2rem; }
+            .inputWrap input, .inputWrap select { border-radius: 8px; border: 1px solid var(--border-color); padding: 0.8rem 1rem; font-size: 1rem; width: 100%; box-sizing: border-box; }
+            .btnCompare { background-color: var(--secondary-color); color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1.1rem; cursor: pointer; transition: background-color 0.3s ease; }
+            .btnCompare:hover { background-color: var(--primary-color); }
+            .about-area-2 { background-color: #f7f9fc; padding: 80px 0; }
+            .info-card { background-color: #ffffff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s ease; }
+            .info-card:hover { transform: translateY(-5px); }
+            .info-card h4 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1rem; }
+            .info-card p { color: #555; font-size: 1rem; }
+            .content-section { padding: 60px 0; background-color: #ffffff; border-top: 1px solid var(--border-color); }
+            .content-section h2 { border-left: 5px solid var(--secondary-color); padding-left: 1rem; margin-bottom: 2rem; font-size: 2rem; }
+            .content-section table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95rem; }
+            .content-section th, .content-section td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+            .content-section th { background-color: #f0f0f0; font-weight: 700; }
+            .content-section .cta-button { text-align: center; margin-top: 40px; }
+            .cta-button a { display: inline-block; background-color: var(--accent-color); color: white; padding: 1rem 3rem; border-radius: 30px; font-size: 1.2rem; font-weight: 700; }
+            .trust-logos { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; }
+            .trust-logos img { max-width: 150px; height: auto; margin: 10px; filter: grayscale(100%); transition: filter 0.3s ease; }
+            .trust-logos img:hover { filter: grayscale(0%); }
+
+            /* Mobile Adjustments */
+            @media (max-width: 768px) {
+                .banner-content h2 { font-size: 2.5rem; }
+                .section-title h2 { font-size: 2rem; }
+                .mainTextCell { font-size: 1.8rem; }
+                .inputWrap input, .inputWrap select { padding: 0.6rem; font-size: 0.9rem; }
+                .btnCompare { font-size: 1rem; padding: 0.8rem 1.5rem; }
+            }
+        </style>
+        <!-- Pexels Image Source: https://www.pexels.com/search/porsche%20cayenne/ -->
+    </head>
+    <body>
+
+        <header class="header">
+            <div class="header-menu header-menu-4">
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container d-flex justify-content-between align-items-center">
+                        <a class="navbar-brand py-3" href="/">
+                            <img class="main" src="/theme/barit/img/logo.webp" alt="로고" width="283" height="45">
+                        </a>
+                        <a href="#mainForm" title="견적 신청 폼으로 이동" class="quick_link d-md-none d-block">
+                            <img src="/theme/barit/img/motop02.webp" width="150" height="28" alt="견적 확인하기">
+                        </a>
+                        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="menu_toggle">
+                                <span class="hamburger"><span></span><span></span><span></span></span>
+                                <span class="hamburger-cross"><span></span><span></span></span>
+                            </span>
+                        </button>
+                        <div class="collapse navbar-collapse right-nav" id="navbarSupportedContent">
+                            <ul class="navbar-nav menu ms-auto d-block d-md-none">
+                                <li class="nav-item submenu"><a href="/policy/terms.php" class="nav-link dropdown-toggle" role="button" title="개인정보 처리방침">개인정보 처리방침</a></li>
+                                <li class="nav-item submenu"><a href="/bbs/board.php?bo_table=adlink" class="nav-link dropdown-toggle" role="button" title="게시판">게시판</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <!-- Banner Section: Porsche Cayenne Lease Focus -->
+            <section class="banner-area-5">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center pt-80 pb-60">
+                        <div class="col-lg-12">
+                            <div class="banner-content wow fadeInRight" data-wow-delay="0.1s">
+                                <div class="row text-start flex-wrap">
+                                    <div class="col-12 col-lg-8">
+                                        <h2 class="w-100 main-ts title_font text-60 mt-70">
+                                            <span class="highlight">포르쉐 카이엔</span>을 합리적으로 만나는 방법,<br>
+                                            <span class="highlight">최저가 카이엔 리스견적</span>을 찾아드립니다.
+                                        </h2>
+                                        <p class="mt-3 text-20 text-dark">
+                                            다양한 리스 전문 업체의 카이엔 리스 상품을 한눈에 비교하고<br>
+                                            나에게 맞는 맞춤형 할인 혜택과 최대 현금지원까지 확인하세요.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mx-auto text-center text-sm-start mt-4">
+                            <div class="hero-img wow">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/porsche-cayenne-coupe-on-a-dirt-road-5337207/ -->
+                                <img class="person-img" src="/theme/barit/img/main_porsche_cayenne.webp" width="734" height="410" alt="포르쉐 카이엔 이미지">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Form Section (S01) and Keyword-rich description -->
+            <section class="pt-80 pb-100 feature-area-3">
+                <div class="container">
+                    <div class="section-title text-center text-sm-start pb-1 mb-lg-5 mb-3">
+                        <h2 class="wow fadeInUp text-50 ls-2">
+                            카이엔리스 가격 비교견적 누적 신청 <span class="highlight">4,992</span>명
+                        </h2>
+                        <p class="wow fadeInUp text-18 text-muted mt-3">
+                            2026년 최신 데이터 기준, <span class="primary-color">카이엔리스 비용</span>은 차량의 등급, 리스 기간, 잔존가치 설정, 그리고 <span class="primary-color">신규 가입 혜택</span>에 따라 크게 달라집니다.<br>
+                            꼼꼼한 <span class="primary-color">리스 비교</span> 없이 가입하면 예상 비용보다 훨씬 많은 지출이 발생할 수 있습니다. <span class="primary-color">카이엔 리스 전문 업체</span>를 통해 정확한 <span class="primary-color">견적</span>을 확인하세요.
+                        </p>
+                    </div>
+
+                    <div id="mainForm" class="mainFormWrap">
+                        <div class="mainFormArea row">
+                            <div class="mainTextCell title_font text-26 mtext-26">
+                                포르쉐 <span class="highlight">카이엔리스</span>,<br>
+                                <span class="primary-color">최저가 견적</span> 제대로 알아보자!
+                            </div>
+                            <div class="subTextCell text-center px-5 ls-1 fw-700">
+                                <span class="mtext-24">
+                                    <span class="primary-color">카이엔 리스 비교</span>를 위한 <span class="primary-color">소유자 정보</span>를 입력해주세요.
+                                </span>
+                                <div class="inputWrap w-100 mt-3">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <label for="frmS01Name" class="soundonly">이름</label>
+                                            <input type="text" id="frmS01Name" class="form-control" name="frmS01Name" placeholder="이름">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inputWrap">
+                                    <div class="row g-0">
+                                        <div class="col-3">
+                                            <label for="first-number2" class="soundonly">핸드폰 앞자리</label>
+                                            <select aria-label="first-number2" class="phoneHeadSelector phoneHeadSelector_m form-control mselect">
+                                                <option value="010" selected="">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-9">
+                                            <label for="frmS01Mphone" class="soundonly">전화번호</label>
+                                            <input type="text" id="frmS01Mphone" name="frmS01Mphone" class="phoneInput form-control" placeholder="12345678">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="inputInfoTextCell text-14">* 휴대폰 번호는 (-) 없이 숫자만 입력해주세요!</div>
+                                <div class="inputInfoTextCell mt-2 text-14 showPolicyWin">
+                                    <input class="checkMain" id="privacyAgree3" name="check" type="checkbox" onclick="return false;">
+                                    <label for="privacyAgree3" data-bs-toggle="modal" data-bs-target="#privacyPopup">개인정보 수집·이용 및 제공 동의</label>
+                                    <span class="btnViewPolicy btnViewPolicy_m text-12" data-bs-toggle="modal" data-bs-target="#privacyPopup">보기</span>
+                                </div>
+                                <button type="button" id="btnSubmitS01" class="w-auto text-16 py-2 px-5 mt-3 d-block btnCompare mbt">내 카이엔리스 견적 비교하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Understanding Cayenne Lease -->
+            <section class="content-section">
+                <div class="container">
+                    <h2 class="section-heading">카이엔리스, 왜 구매와 다를까요? 핵심 장단점 분석</h2>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <article>
+                                <h3 class="fw-bold text-dark mb-3">카이엔리스의 장점: 초기비용 절감과 세금 혜택</h3>
+                                <p>포르쉐 카이엔을 소유하는 가장 현명한 방법 중 하나는 <span class="primary-color">카이엔 리스</span>입니다. 리스는 차량 구매 시 발생하는 취득세, 등록세, 자동차세 등의 초기 비용 부담이 없다는 <span class="highlight">가장 큰 장점</span>이 있습니다. 특히 개인 사업자나 법인 사업자의 경우, <span class="secondary-color">월 리스료 전액을 비용으로 처리</span>하여 세금 절감 효과를 볼 수 있습니다. <span class="primary-color">카이엔 리스전문업체</span>를 통해 견적을 받으면 <span class="primary-color">월납입료 평균</span>을 낮추고, <span class="primary-color">카이엔리스 신규 가입 혜택</span>으로 <span class="secondary-color">현금지원</span>을 받을 수도 있습니다.</p>
+                                <p>차량을 구매하는 대신 리스를 선택할 경우, 차량 가액 전체를 한 번에 지불할 필요 없이 일정 기간 동안만 차량을 이용하고 반납할 수 있습니다. 이는 <span class="highlight">포르쉐 카이엔</span>과 같이 높은 차량 가액을 가진 모델의 경우 초기 비용 부담을 획기적으로 줄여주는 <span class="accent-color">장점</span>이 됩니다.</p>
+                            </article>
+                        </div>
+                        <div class="col-lg-6">
+                            <article>
+                                <h3 class="fw-bold text-dark mb-3">카이엔리스의 단점: 총비용 증가와 위약금</h3>
+                                <p><span class="primary-color">카이엔 리스</span>가 무조건 좋은 것만은 아닙니다. <span class="highlight">카이엔리스 단점</span>으로 가장 먼저 꼽히는 것은 총 <span class="primary-color">비용</span>입니다. 리스 기간 동안의 이자 비용이 포함되기 때문에, 차량을 완전히 구매하는 것에 비해 총 지출 <span class="primary-color">금액</span>이 높아질 수 있습니다. 또한, 계약 기간 만료 전에 차량을 반납하거나 <span class="primary-color">가입</span>을 해지할 경우 <span class="secondary-color">높은 위약금</span>이 발생한다는 <span class="accent-color">단점</span>이 있습니다.</p>
+                                <p>따라서 <span class="primary-color">카이엔 리스견적</span>을 받을 때, <span class="primary-color">잔존가치</span> 설정과 계약 기간을 꼼꼼히 따져봐야 합니다. <span class="primary-color">월납입료 평균</span>만 보고 덜컥 계약하기보다는, <span class="primary-color">카이엔 리스 장단점</span>을 명확히 비교하는 것이 중요합니다. 특히 <span class="primary-color">카이엔 리스 저렴한곳</span>을 찾을 때, 숨겨진 수수료나 위약금 조항이 없는지 확인하는 <span class="primary-color">전문 업체</span>의 조언이 필요합니다.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Comparison Table and Discount Features -->
+            <section class="customize-card-area bg_disable">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center text-sm-start mb-4">
+                                <h2 class="wow fadeInUp main-ts title_font">나에게 맞는 <span class="t_deco">특</span><span class="t_deco">별</span><span class="t_deco">할</span><span class="t_deco">인</span> <span class="primary-color">혜택</span>으로 <span class="accent-color">카이엔 리스</span> 절감하기</h2>
+                                <h3 class="text-30 ls-1 fw-600"><span class="secondary-color">최대 할인율</span> 적용된 내 차 리스 <span class="primary-color">견적</span>을 확인하세요.</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Discount Icons Section -->
+                    <div class="row align-items-center justify-content-center mt-5">
+                        <div class="col-4 col-md">
+                            <div class="feature-card-widget-r wow fadeInUp text-center mb-3">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/dollar-bill-in-front-of-a-keyboard-1647962/ -->
+                                <img src="/theme/barit/img/d01_cash.webp" width="184" height="185" alt="현금지원">
+                                <p class="text-26 fw-700 mt-2">최대 <span class="highlight">현금지원</span></p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md">
+                            <div class="feature-card-widget-r wow fadeInUp text-center mb-3">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/person-typing-on-a-laptop-4178553/ -->
+                                <img src="/theme/barit/img/d02_laptop.webp" width="184" height="185" alt="신규가입혜택">
+                                <p class="text-26 fw-700 mt-2">신규 <span class="highlight">가입 혜택</span></p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md">
+                            <div class="feature-card-widget-r wow fadeInUp text-center mb-3">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/car-on-road-in-forest-4775015/ -->
+                                <img src="/theme/barit/img/d03_mileage.webp" width="184" height="185" alt="약정거리조절">
+                                <p class="text-26 fw-700 mt-2">약정거리 조절</p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md">
+                            <div class="feature-card-widget-r wow fadeInUp text-center mb-3">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/luxury-watch-on-table-1317712/ -->
+                                <img src="/theme/barit/img/d04_gift.webp" width="184" height="185" alt="사은품증정">
+                                <p class="text-26 fw-700 mt-2">고가 <span class="highlight">사은품</span> 증정</p>
+                            </div>
+                        </div>
+                        <div class="col-4 col-md">
+                            <div class="feature-card-widget-r wow fadeInUp text-center mb-3">
+                                <!-- Pexels Image Source: https://www.pexels.com/photo/hand-holding-key-fob-1520619/ -->
+                                <img src="/theme/barit/img/d05_key.webp" width="184" height="185" alt="인수옵션">
+                                <p class="text-26 fw-700 mt-2">자유로운 <span class="highlight">인수/반납</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12 text-center">
+                            <h3 class="text-center highlight text-24">*<span class="primary-color">카이엔리스 상품</span>은 회사마다 <span class="secondary-color">장단점</span>과 <span class="secondary-color">할인 혜택</span>이 상이합니다.</h3>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5 align-items-center justify-content-center">
+                        <div class="col-12 text-center cta-button">
+                            <a href="#mainForm" class="btn-primary">나에게 맞는 카이엔리스 최저가 견적 확인하기</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Deep Dive into Calculation and Keywords -->
+            <section class="content-section">
+                <div class="container">
+                    <h2 class="section-heading">카이엔리스 <span class="secondary-color">예상 비용</span> 분석: 2026년 기준으로 알아야 할 것들</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <article>
+                                <h3 class="fw-bold text-dark mb-3">카이엔 리스 가격 산출 공식: 월납입료 평균을 낮추는 핵심 요소</h3>
+                                <p><span class="highlight">포르쉐 카이엔</span> 리스의 <span class="primary-color">월납입료 평균</span>은 <span class="secondary-color">차량 가액</span>, <span class="secondary-color">잔존가치</span>, <span class="secondary-color">리스 기간</span>, 그리고 <span class="secondary-color">금리</span>에 따라 결정됩니다. <span class="primary-color">카이엔 리스견적</span>을 받을 때, <span class="primary-color">월납입료 금액</span>을 낮추려면 잔존가치를 높게 설정하고 리스 기간을 길게 가져가는 것이 일반적입니다. 하지만 잔존가치가 높을수록 만기 시 차량 <span class="primary-color">인수 비용</span> 부담이 커지므로 <span class="primary-color">카이엔 리스 장단점</span>을 신중하게 비교해야 합니다.</p>
+                                <p>예를 들어, 36개월 리스 조건에서 잔존가치를 30%로 설정한 경우와 50%로 설정한 경우의 <span class="primary-color">월납입료 차이점</span>은 상당합니다. <span class="primary-color">카이엔리스</span>는 단순히 <span class="primary-color">월납입료 싼곳</span>을 찾는 것이 아니라, <span class="primary-color">총 리스 비용</span>과 만기 후 계획까지 고려하여 <span class="secondary-color">전문 업체</span>와 상담해야 합니다. 2026년에는 금융 시장의 변동성으로 인해 <span class="primary-color">카이엔 리스가격</span> 변동이 잦아질 것으로 예상되므로 실시간 <span class="primary-color">비교견적</span>이 필수입니다.</p>
+
+                                <h4 class="fw-bold text-dark mt-4">카이엔 리스 주요 결정 요소 (2026년 기준)</h4>
+                                <ul>
+                                    <li><strong>잔존가치:</strong> 리스 만기 시 차량의 예상 가치. 잔존가치가 높을수록 <span class="primary-color">월 리스료</span>가 낮아집니다.</li>
+                                    <li><strong>리스 기간:</strong> 리스 기간이 길수록 <span class="primary-color">월납입료</span>가 낮아집니다. (예: 36개월 vs 48개월)</li>
+                                    <li><strong>금리:</strong> <span class="primary-color">리스전문업체</span>별로 금리(수수료)가 달라지므로 <span class="primary-color">비교</span>가 중요합니다.</li>
+                                    <li><strong>선납금/보증금:</strong> 초기 비용을 많이 납부할수록 월 납입료가 절감됩니다. <span class="highlight">초기비용 0원</span> 리스도 가능합니다.</li>
+                                    <li><strong><span class="highlight">카이엔 리스 할인 혜택</span>:</strong> <span class="primary-color">신규 가입 혜택</span>이나 <span class="primary-color">현금지원</span> 등 프로모션을 활용해야 <span class="primary-color">카이엔리스 저렴한곳</span>을 찾을 수 있습니다.</li>
+                                </ul>
+
+                                <h3 class="fw-bold text-dark mt-5">카이엔 리스 가입 순위 및 추천 기준: <span class="highlight">내돈내산 후기</span> 기반 분석</h3>
+                                <p>단순히 <span class="primary-color">카이엔 리스 추천</span>을 받기보다는, <span class="primary-color">카이엔 리스 가입 순위</span>가 높은 리스사들을 대상으로 <span class="highlight">다이렉트 비교</span>를 하는 것이 중요합니다. <span class="secondary-color">카이엔 리스 장단점</span>을 비교해보면, 다이렉트 리스는 <span class="primary-color">저렴한 리스가격</span>이라는 장점이 있지만, 보장 범위 선택에 어려움을 느낄 수 있습니다. 반면 <span class="primary-color">리스전문 업체</span>를 통하면 전문가의 상담을 받을 수 있습니다.</p>
+                                <p>저희 사이트에서는 <span class="primary-color">카이엔 리스 비교</span>를 통해 고객님에게 맞는 최적의 <span class="primary-color">리스 상품</span>을 찾아드립니다. <span class="accent-color">카이엔 리스 내돈내산 후기</span>를 바탕으로 실질적인 <span class="primary-color">카이엔 리스 장점 단점</span>을 분석하고, <span class="primary-color">사은품</span>이나 <span class="primary-color">현금지원</span> 혜택을 함께 고려하여 종합적인 <span class="highlight">리스견적</span>을 제공합니다.</p>
+
+                                <h4 class="fw-bold text-dark mt-4">카이엔 리스 신규 가입 시 유의사항: '함께 많이 찾는' 정보</h4>
+                                <p>포르쉐 카이엔 리스를 진행할 때는 몇 가지 유의사항이 있습니다. 특히 <span class="primary-color">카이엔리스 보험</span> 가입 여부는 중요한 결정 사항입니다. 리스 상품에 보험료가 포함되는 경우(운용리스)와 별도로 가입하는 경우(금융리스)가 있으므로 <span class="primary-color">카이엔 리스가격</span>에 포함된 내역을 꼼꼼히 확인해야 합니다.</p>
+                                <p>또한, <span class="secondary-color">카이엔 리스 할인 혜택</span>의 종류와 <span class="primary-color">현금지원 금액</span>이 리스사별로 다릅니다. 예를 들어, <span class="primary-color">신규 가입 혜택</span>으로 <span class="primary-color">상품권</span>이나 <span class="secondary-color">지원금</span>을 제공하는 곳도 있습니다. <span class="primary-color">카이엔 리스 저렴한 곳</span>을 찾으려면 이 모든 <span class="primary-color">할인 혜택</span>을 빠짐없이 확인해야 합니다.</p>
+
+                                <h3 class="fw-bold text-dark mt-5">카이엔 리스 vs 렌트 vs 할부: <span class="primary-color">장단점 차이점</span> 비교 분석</h3>
+                                <p><span class="secondary-color">카이엔리스</span>를 고민하는 분들은 <span class="primary-color">장기렌트</span>나 <span class="primary-color">할부 구매</span>와 비교하는 경우가 많습니다. <span class="primary-color">카이엔리스</span>는 일반 번호판(하, 허, 호 번호판 아님)을 사용할 수 있고, 금융 상품으로 분류되어 대출 한도에 영향을 줄 수 있습니다. 반면 <span class="primary-color">장기렌트</span>는 보험료가 포함되어 있고 초기 비용이 저렴하며, 사고 시 보험료 할증 부담이 없다는 <span class="primary-color">장점</span>이 있습니다.</p>
+                                <p><span class="primary-color">카이엔 리스 견적</span>을 설계할 때, <span class="primary-color">리스 장단점</span>과 <span class="primary-color">렌트 장단점</span>을 명확히 비교해야 합니다. <span class="primary-color">카이엔 리스 저렴한 곳</span>을 찾는 것도 중요하지만, 본인의 운행 습관과 재정 상황에 맞춰 적절한 <span class="primary-color">금융 상품</span>을 설계하는 것이 장기적으로 <span class="primary-color">비용</span>을 절감하는 방법입니다.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Data Visualization and Keyword Density -->
+            <section class="content-section">
+                <div class="container">
+                    <h2 class="section-heading">카이엔리스 <span class="accent-color">가격</span> 절약 전략: <span class="primary-color">할인 특약</span> 비교 분석표</h2>
+                    <p>카이엔 리스 <span class="primary-color">가입</span> 시 가장 중요한 것은 <span class="secondary-color">할인 특약</span>과 <span class="primary-color">현금지원 혜택</span>을 최대한 활용하는 것입니다. <span class="primary-color">리스전문업체</span>별로 제공하는 <span class="secondary-color">할인 혜택</span>과 <span class="primary-color">지원금</span>이 다르므로 꼼꼼한 비교가 필요합니다. 다음은 2026년 기준 주요 리스사의 <span class="primary-color">카이엔 리스 할인 혜택</span>을 비교한 표입니다.</p>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>할인/지원 종류</th>
+                                    <th>주요 내용</th>
+                                    <th>할인율/혜택 (예상)</th>
+                                    <th><span class="primary-color">카이엔 리스 비용</span> 절감 장점</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><span class="highlight">현금지원/사은품 혜택</span></td>
+                                    <td><span class="primary-color">신규 가입</span> 시 제공되는 <span class="primary-color">지원금</span> 또는 고급 <span class="primary-color">사은품</span> 증정</td>
+                                    <td>평균 100만 원 ~ 300만 원</td>
+                                    <td><span class="primary-color">카이엔리스 저렴한곳</span>을 찾을 때, <span class="secondary-color">초기비용</span> 절감 효과가 가장 큰 혜택입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="highlight">초기비용 0원 무보증 리스</span></td>
+                                    <td>별도의 보증금이나 선납금 없이 <span class="primary-color">가입</span> 가능한 상품</td>
+                                    <td>월납입료에 포함 (초기 부담 0)</td>
+                                    <td><span class="primary-color">카이엔리스 비용</span>을 한 번에 지불하기 어려운 고객에게 유리하며, <span class="primary-color">카이엔 리스 장점</span>을 극대화합니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="highlight">약정 주행거리 조절</span></td>
+                                    <td>연간 주행거리를 낮게 설정하여 <span class="primary-color">월납입료</span>를 절감 (ex: 1만 km 이하)</td>
+                                    <td>월납입료 5% ~ 15% 절감</td>
+                                    <td>주행량이 적은 <span class="primary-color">카이엔</span> 운전자에게 <span class="primary-color">카이엔리스 싼곳</span>으로 인식될 수 있는 <span class="primary-color">할인 혜택</span>입니다.</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="highlight">잔존가치 최대 설정</span></td>
+                                    <td>만기 시 차량 가치를 높게 설정하여 <span class="primary-color">월납입료</span>를 절감</td>
+                                    <td>월납입료 10% ~ 20% 절감</td>
+                                    <td><span class="primary-color">카이엔리스</span> 만기 후 반납을 고려하는 고객에게 <span class="primary-color">리스견적</span>을 낮추는 핵심 요소입니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="mt-4">이러한 특약을 통해 <span class="primary-color">카이엔리스</span>의 <span class="primary-color">예상 비용</span>을 크게 줄일 수 있습니다. <span class="secondary-color">카이엔 리스 가입</span> 전에 각 <span class="primary-color">전문 업체</span>의 <span class="highlight">카이엔 리스 할인 혜택</span>을 꼼꼼히 확인하여 <span class="primary-color">카이엔 리스가격</span>을 최저가로 확보하는 것이 중요합니다.</p>
+
+                    <h3 class="fw-bold text-dark mt-5">카이엔리스 <span class="accent-color">내돈내산 후기</span> 및 <span class="secondary-color">SNS</span> 동향 분석 (2026년)</h3>
+                    <p>최근 <span class="primary-color">카이엔 리스</span> 시장에서는 <span class="highlight">내돈내산 후기</span>와 <span class="secondary-color">유튜브</span>, <span class="secondary-color">네이버</span> 카페 등 SNS 채널을 통한 정보 공유가 활발합니다. <span class="primary-color">카이엔리스</span> 구매자들은 <span class="primary-color">가입 순위</span>나 <span class="primary-color">추천</span>에만 의존하지 않고, 직접 <span class="primary-color">카이엔 리스 장단점</span>을 체험한 후기를 통해 <span class="primary-color">리스전문 업체</span>를 선택하는 경향이 있습니다.</p>
+                    <p><span class="highlight">카이엔 리스 후기</span>를 보면, <span class="primary-color">현금지원 금액</span>이 큰 업체, 또는 사후 관리가 철저한 <span class="primary-color">전문 업체</span>가 <span class="primary-color">카이엔 리스 추천</span> 순위에서 높게 평가됩니다. <span class="secondary-color">2026년</span>에는 <span class="primary-color">구글</span>, <span class="primary-color">인스타그램</span>, <span class="primary-color">페이스북</span> 등 다양한 플랫폼에서 <span class="primary-color">카이엔리스 이벤트</span>와 <span class="secondary-color">신규 가입 혜택</span> 정보가 쏟아져 나올 것으로 예상됩니다. <span class="primary-color">카이엔 리스 저렴한 곳</span>을 찾으려면 이 모든 정보를 취합하여 <span class="primary-color">비교</span>하는 노력이 필요합니다.</p>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Trust Building and External Links -->
+            <section class="content-section">
+                <div class="container">
+                    <h2 class="section-heading">공신력 있는 정보 출처를 통한 신뢰성 확보: <span class="primary-color">카이엔 리스 전문 업체</span> 선택 가이드</h2>
+                    <p><span class="primary-color">카이엔리스</span>는 고가 차량의 <span class="primary-color">금융 상품</span>이므로, 정확한 정보는 공인된 기관을 통해 확인하는 것이 중요합니다. 저희 사이트는 <span class="secondary-color">카이엔 리스 견적</span> 산출 시 객관적인 데이터를 기반으로 합니다. 다음은 <span class="primary-color">카이엔 리스 가입</span> 관련 정보를 얻을 수 있는 신뢰할 수 있는 외부 링크입니다.</p>
+                    <ul>
+                        <li><a href="https://www.fss.or.kr/" target="_blank" class="text-secondary fw-bold">금융감독원 (FSS)</a>: 금융 상품(리스 포함) 소비자 보호, 불공정 약관 관련 정보 제공.</li>
+                        <li><a href="https://www.koreacar.or.kr/" target="_blank" class="text-secondary fw-bold">한국자동차산업협회 (KAMA)</a>: 국내외 자동차 시장 동향 및 통계 자료.</li>
+                        <li><a href="https://www.tax.go.kr/" target="_blank" class="text-secondary fw-bold">국세청 (NTS)</a>: 리스 비용 처리 관련 세금 정보 및 가이드라인 제공.</li>
+                        <li><a href="https://www.consumer.go.kr/" target="_blank" class="text-secondary fw-bold">한국소비자원</a>: 자동차 관련 소비자 피해 구제 및 정보 제공.</li>
+                        <li><a href="https://namu.wiki/w/%EC%9E%90%EB%8F%99%EC%B0%A8%EB%A6%AC%EC%8A%A4" target="_blank" class="text-secondary fw-bold">나무위키 자동차 리스</a>: 자동차 리스에 대한 상세 정보 및 개념 설명.</li>
+                    </ul>
+                    <p class="mt-4">이러한 정보를 바탕으로 <span class="primary-color">카이엔리스 비교</span>를 진행하여 <span class="primary-color">카이엔 리스 가입</span>을 결정하시면, <span class="secondary-color">카이엔 리스 장단점</span>을 명확히 파악하고 <span class="primary-color">카이엔 리스 저렴한 곳</span>을 선택할 수 있습니다. <span class="highlight">카이엔 리스 내돈내산 후기</span>를 찾아볼 때도 이러한 기본 지식을 바탕으로 분석하는 것이 현명합니다.</p>
+                </div>
+            </section>
+
+            <!-- Form Section (S02) - Strategically placed for conversion -->
+            <section class="form_bg pt-100 pb-100">
+                <div class="container">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-10 col-12">
+                            <div class="mainFormArea text-center">
+                                <div class="mainTextCell title_font main-ts">
+                                    <span class="secondary-color">카이엔리스</span> <span class="primary-color">비용</span>, <span class="accent-color">현금지원</span> 비교가 핵심이다!
+                                </div>
+                                <div class="text-center text-16">* 오프라인 대비 <span class="primary-color">카이엔 리스가격</span> 절감 가능</div>
+                                <div class="subTextCell ls-5 fw-900 text-32 mt-4">
+                                    <span class="secondary-color">포르쉐 카이엔</span> 리스를 위한 <span class="primary-color">상담 정보</span>를 입력해주세요.
+                                </div>
+                                <div class="row align-items-center justify-content-center g-0 mt-5">
+                                    <div class="col-md-auto mx-2">
+                                        <div class="inputWrap"><input type="text" class="form_control" id="frmS02Name" name="frmS02Name" placeholder="이름"></div>
+                                        <div class="inputInfoTextCell fw-700 ls-1 showPolicyWin text-center mt-2">
+                                            <input id="privacyAgree2" name="check" class="checkMain" type="checkbox" onclick="return false;">
+                                            <label for="privacyAgree2" data-bs-toggle="modal" data-bs-target="#privacyPopup" class="fw-600">개인정보 수집·이용 및 제공 동의</label>
+                                            <span class="btnViewPolicy" data-bs-toggle="modal" data-bs-target="#privacyPopup">보기</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <div class="inputWrap">
+                                            <label for="first-number" class="soundonly">휴대폰 앞자리</label>
+                                            <select aria-label="first-number" class="phoneHeadSelector">
+                                                <option value="010" selected="">010</option>
+                                                <option value="011">011</option>
+                                                <option value="016">016</option>
+                                                <option value="017">017</option>
+                                                <option value="018">018</option>
+                                                <option value="019">019</option>
+                                            </select>
+                                            <input type="text" id="frmS02Mphone" name="frmS02Mphone" class="phoneInput" placeholder="12345678">
+                                        </div>
+                                        <div class="inputInfoTextCell fw-600 ls-1 text-center mt-2">* 휴대폰 번호는 (-) 없이 숫자만 입력해주세요!</div>
+                                    </div>
+                                </div>
+                                <button type="button" id="btnSubmitS02" class="btnCompare mt-5">내 카이엔리스 견적 확인하기</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Informational Content Section: Long-form Content for SEO -->
+            <section class="content-section">
+                <div class="container">
+                    <h2 class="section-heading">카이엔리스 가입 심화 가이드: 2026년 최신 정보</h2>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <article>
+                                <h3 class="fw-bold text-dark mb-3">포르쉐 카이엔 리스 vs 장기렌트: <span class="primary-color">차이점</span> 비교 및 선택 기준</h3>
+                                <p><span class="highlight">카이엔리스</span>를 고려하는 고객들이 가장 많이 비교하는 상품은 <span class="primary-color">장기렌트</span>입니다. 두 상품은 모두 월납입금을 내고 차량을 이용한다는 점에서 유사하지만, <span class="primary-color">장단점 차이점</span>이 명확합니다. <span class="primary-color">카이엔리스</span>는 일반 번호판을 사용하고, 만기 시 <span class="secondary-color">인수 옵션</span> 선택의 폭이 넓어 <span class="primary-color">카이엔 리스 장점</span>을 선호하는 고객이 많습니다. 반면 <span class="primary-color">장기렌트</span>는 보험료, 세금, 정비 비용이 모두 <span class="primary-color">월납입료</span>에 포함되어 있어 관리가 편리하다는 <span class="secondary-color">장점</span>이 있습니다.</p>
+                                <p><strong><span class="primary-color">카이엔리스</span>의 장점:</strong> 일반 번호판 사용, <span class="primary-color">카이엔</span> 차량의 감가상각을 리스사가 부담, <span class="accent-color">초기비용 0원</span> 설정 가능. <span class="primary-color">카이엔 리스가격</span>을 낮추기 위해 <span class="secondary-color">잔존가치</span> 조절이 용이하며, <span class="primary-color">카이엔 리스 할인 혜택</span>으로 <span class="primary-color">현금지원</span>을 받을 수 있습니다.</p>
+                                <p><strong><span class="primary-color">카이엔리스</span>의 단점:</strong> 보험료 별도 <span class="primary-color">가입</span> 필요(금융리스), <span class="accent-color">중도 해지 시 위약금</span> 부담이 크며, 대출로 인식되어 신용도에 영향을 줄 수 있습니다.</p>
+
+                                <h3 class="fw-bold text-dark mt-5">카이엔 리스 <span class="secondary-color">신규 가입 혜택</span>: <span class="primary-color">현금지원</span> 및 <span class="primary-color">사은품</span> 비교</h3>
+                                <p>2026년 <span class="primary-color">카이엔리스</span> 시장은 <span class="primary-color">신규 가입 혜택</span> 경쟁이 치열합니다. <span class="primary-color">카이엔 리스전문업체</span>들은 <span class="secondary-color">카이엔</span> 고객 유치를 위해 <span class="primary-color">최대 현금지원</span>, 고급 <span class="primary-color">사은품</span>, <span class="primary-color">상품권</span> 등 다양한 프로모션을 진행하고 있습니다. <span class="highlight">카이엔 리스 저렴한 곳</span>을 찾으려면 <span class="primary-color">월납입료 평균</span> 외에도 이러한 부가적인 <span class="primary-color">지원금</span>을 꼼꼼히 <span class="primary-color">비교</span>해야 합니다.</p>
+                                <p>단, <span class="primary-color">카이엔 리스 내돈내산 후기</span>를 보면, <span class="primary-color">현금지원</span>이 많다고 무조건 <span class="secondary-color">카이엔 리스가격</span>이 <span class="primary-color">싼곳</span>은 아니라는 점을 알 수 있습니다. <span class="secondary-color">카이엔 리스</span>의 <span class="primary-color">총 비용</span>은 <span class="primary-color">월납입료</span>와 <span class="primary-color">잔존가치</span>, <span class="primary-color">금리</span> 등 여러 요소에 의해 결정되므로, <span class="primary-color">전문 업체</span>의 상담을 통해 <span class="primary-color">카이엔 리스 견적</span>을 종합적으로 분석하는 것이 중요합니다.</p>
+
+                                <h3 class="fw-bold text-dark mt-5">카이엔 리스 가입 전 Q&A: <span class="primary-color">월납입료 평균</span>과 <span class="secondary-color">예상 금액</span></h3>
+                                <ul>
+                                    <li><strong>Q. <span class="primary-color">카이엔 리스</span>의 <span class="secondary-color">월납입료 평균</span>은 얼마인가요?</strong><br>A. <span class="primary-color">카이엔</span> 모델(기본, 쿠페, E-하이브리드 등)과 <span class="primary-color">리스 기간</span>, <span class="primary-color">잔존가치</span> 설정에 따라 <span class="primary-color">월납입료 금액</span>이 천차만별입니다. 일반적으로 <span class="primary-color">리스 기간</span> 48개월, 선납금 20% 기준으로 <span class="primary-color">월납입료 평균</span>은 100만 원 후반대부터 시작하지만, <span class="secondary-color">카이엔 리스 전문 업체</span>별 <span class="primary-color">할인 혜택</span>에 따라 <span class="primary-color">예상 비용</span>이 달라질 수 있습니다. 정확한 <span class="primary-color">카이엔 리스 견적</span>은 <span class="primary-color">비교견적</span>을 통해 확인해야 합니다.</li>
+                                    <li><strong>Q. <span class="primary-color">카이엔 리스</span> 만기 시 <span class="primary-color">인수</span>와 <span class="primary-color">반납</span> 중 무엇이 유리한가요?</strong><br>A. <span class="primary-color">카이엔 리스</span> 만기 시 <span class="highlight">인수</span>를 원하면 <span class="primary-color">잔존가치</span>를 지불해야 합니다. <span class="primary-color">카이엔</span>의 <span class="primary-color">중고차</span> 시세가 <span class="primary-color">잔존가치</span>보다 높다면 <span class="primary-color">인수</span>가 유리할 수 있습니다. 반면 <span class="secondary-color">반납</span>을 선택하면 추가 비용 없이 차량을 반납하고 새로운 <span class="primary-color">카이엔리스</span>를 재<span class="primary-color">가입</span>할 수 있습니다. <span class="primary-color">카이엔 리스 장단점</span>을 고려하여 결정해야 합니다.</li>
+                                    <li><strong>Q. <span class="primary-color">카이엔 리스</span> <span class="secondary-color">신규 가입</span> 시 <span class="primary-color">할인 혜택</span>을 많이 받으려면 어떻게 해야 하나요?</strong><br>A. 여러 <span class="primary-color">리스전문업체</span>를 대상으로 <span class="secondary-color">카이엔 리스 비교</span>를 진행하여 <span class="primary-color">최대 현금지원</span> 또는 <span class="primary-color">사은품</span>을 제공하는 곳을 선택해야 합니다. <span class="primary-color">카이엔 리스 저렴한 곳</span>은 <span class="primary-color">월납입료</span>뿐 아니라 <span class="secondary-color">신규 가입 혜택</span>까지 고려하여 결정됩니다.</li>
+                                </ul>
+
+                                <h3 class="fw-bold text-dark mt-5">카이엔 리스 시장 동향 (2026년): <span class="primary-color">카이엔리스</span> <span class="secondary-color">전문 업체</span> 경쟁 심화</h3>
+                                <p>2026년에는 <span class="primary-color">포르쉐 카이엔</span> 리스 시장에서 <span class="primary-color">리스전문 업체</span> 간의 경쟁이 더욱 치열해질 것으로 예상됩니다. 이는 <span class="primary-color">카이엔 리스가격</span> 하락과 <span class="primary-color">신규 가입 혜택</span> 증가로 이어져 소비자에게는 <span class="primary-color">장점</span>이 됩니다. <span class="secondary-color">카이엔 리스 저렴한곳</span>을 찾기 위한 소비자들의 <span class="primary-color">비교</span> 검색이 증가하고 있으며, <span class="primary-color">카이엔 리스 전문 업체</span>들은 <span class="primary-color">현금지원 금액</span>을 높여 고객 유치에 힘쓰고 있습니다.</p>
+                                <p>저희 사이트는 이러한 시장 상황을 반영하여 <span class="primary-color">카이엔 리스</span>의 <span class="primary-color">최저가 견적</span>을 실시간으로 제공합니다. <span class="primary-color">카이엔리스</span>에 대한 <span class="primary-color">장단점</span>, <span class="primary-color">예상 비용</span>, <span class="primary-color">할인 혜택</span> 등 모든 정보를 투명하게 공개하여 고객님의 현명한 <span class="primary-color">가입</span>을 돕습니다.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Form Section (S03) - Sidebar Form -->
+            <aside class="sideForm on">
+                <div class="titleCell title_font text-24">
+                    포르쉐 카이엔리스<br>
+                    <span class="titleCell title_font fw-700 ls-1 text-32">내 견적은 얼마?</span>
+                </div>
+                <div class="formCell">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th><label for="frmS03Name">이름</label></th>
+                            <td><input name="frmS03Name" type="text" id="frmS03Name" class="form_control" placeholder="예)나보람"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="frmS03Mphone">연락처</label></th>
+                            <td><input name="frmS03Mphone" id="frmS03Mphone" type="text" class="form_control" placeholder="예)01012345678"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="privacyChkCell showPolicyWin fw-700"><input class="checkMain" id="agree_chk" type="checkbox" onclick="return false;">
+                        <label for="agree_chk" data-bs-toggle="modal" data-bs-target="#privacyPopup" class="fw-400">개인정보 수집·이용 및 제공 동의</label>
+                        <span class="btnViewPolicy" data-bs-toggle="modal" data-bs-target="#privacyPopup">보기</span></div>
+                </div>
+                <button type="button" id="btnSubmitS03" class="btnApply">견적 비교하기<img src="/theme/barit/img/formArrow.webp" alt="보험료 DB접수하기"></button>
+            </aside>
+
+        </main>
+
+        <!-- Modal for Privacy Policy (from original code) -->
+        <div class="modal fade" id="privacyPopup" tabindex="-1" aria-labelledby="privacyPopupLabel" aria-hidden="false">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                        <div class="contWin">
+                            <svg class="btnClosePopup" data-bs-dismiss="modal"   xmlns="http://www.w3.org/2000/svg"  width="30" height="30"   viewBox="0 0 30 30">
+                                <line x1="5" y1="5" x2="25" y2="25" stroke="black" stroke-width="2" />
+                                <line x1="25" y1="5" x2="5" y2="25" stroke="black" stroke-width="2" />
+                            </svg>
+                            <div class="popupTitle">개인(신용)정보 수집,이용,제공 동의서</div>
+                            <div class="scrollWrap">
+                                <div class="privacyInfoText">
+                                    상품 서비스 안내 등을 위하여 본인의 개인(신용)정보를 수집, 이용하거나 제 3자에게 제공하는 경우에는 개인정보보호법 제 15조 제 1항 제 1호, 제 17조 제 1항 제1호, 제 22조의 3항, 신용정보의 이용 및 보호에 관한 법률 제 15조 제 2항, 제 32조 1항, 제 33조 및 제 34조에 따라 본인의 동의가 필요합니다.
+                                </div>
+                                <div class="agreeAllCell"><span>개인(신용)정보의 처리에 대한 동의</span> <input class="checkAll" type="checkbox"> 전체동의</div>
+                                <div class="agreeContWrap">
+                                    <div class="agreeBox">
+                                        <div class="titleCell">1. 개인정보 수집 및 이용에 대한 동의<span>[필수]</span> <input class="agreeChk1" type="checkbox"></div>
+                                        <div class="agreeTextCell">
+                                            <span class="bold">□ 개인(신용)정보의 수집 · 이용에 관한 사항</span><br>
+                                            <span class="bold">① 개인(신용)정보의 수집ㆍ이용 목적</span><br>
+                                            : 다이렉트 카이엔리스 가격 확인 서비스 제공 및 만기 안내<br>
+                                            <span class="bold">② 개인(신용)정보의 수집 · 이용 항목</span><br>
+                                            : 이름, 연락처, 생년월일<br>
+                                            <span class="bold">③ 개인정보 보유 및 이용기간</span><br>
+                                            : 동의일로부터 5년간 보유<br>
+                                            ※ 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 상담이 불가합니다.
+                                        </div>
+                                    </div>
+
+                                    <div class="agreeBox">
+                                        <div class="titleCell">2. 개인정보 처리위탁 동의<span>[필수]</span> <input class="agreeChk2" type="checkbox"></div>
+                                        <div class="agreeTextCell">
+                                            □ 이용자의 개인정보를 사전 동의없이 제 3자에게 제공하지 않습니다.<br>
+                                            □ 이용자의 사전 동의에 따라 해당 개인정보가 제 3자에게 제공되는 경우는 다음과 같습니다.<br>
+                                            <span class="bold">① 제공받는 자</span><br>
+                                            : <br>
+                                            <span class="bold">② 제공받는 자의 이용 목적</span><br>
+                                            : 다이렉트 카이엔리스 가격 확인 서비스 제공 및 만기 안내, 제3자의 상품 또는 서비스에 대한 개인 맞춤 광고 정보를 전송<br>
+                                            다이렉트 카이엔리스 가격 확인, 카이엔 리스 가입<br>
+                                            ㈜다이렉트 카이엔리스 가격 확인 서비스 제공 및 만기 안내, 리스상품에 대한 안내<br>
+                                            <br>
+                                            <span class="bold">③ 제공항목</span><br>
+                                            : 이름, 연락처, 생년월일<br>
+                                            <span class="bold">④ 제공받는 자의 개인정보보유 및 이용기간</span><br>
+                                            : 동의일로부터 5년간 보유 <br>
+                                            ※ 개인정보 수집 이용에 동의하지 않을 수 있으나, 미동의 시 상담이 불가합니다.
+                                        </div>
+                                    </div>
+
+                                    <div class="agreeBox">
+                                        <div class="titleCell">
+                                            3. 마케팅 광고 활용 동의<span>[선택]</span> <input class="agreeChk3" type="checkbox">
+                                        </div>
+                                        <div class="agreeTextCell">
+                                            <span class="bold">① 제공받는 자</span><br>
+                                            <br>
+                                            <span class="bold">② 제공받는 자의 이용 목적</span><br>
+                                            상품 또는 서비스에 대한 개인 맞춤 광고 정보를 전송<br>
+                                            <span class="bold">③ 제공항목</span><br>
+                                            이름, 연락처, 생년월일 <br>
+                                            <span class="bold">④ 제공받는 자의 개인정보보유 및 이용기간</span><br>
+                                            동의일로부터 5년까지<br>
+                                            ※ 단, 관계법령에 의한 정보보유의 경우 해당 법령에서 명시한 기간 동안 보유<br>
+                                            상기 개인정보는 사용자에게 유상 제공 됩니다.
+                                        </div>
+                                    </div>
+                                </div><!--//agreeContWrap-->
+
+                                <div class="privacyInfoText">
+                                    □ 안내수단 : 문자메시지,이메일,전화 등<br>
+                                    □ 제3자 정보제공의 동의 철회<br>
+                                    본 동의서에 동의하신 고객 중 제 3자 정보제공을 철회하고 싶은 경우 이미 제 3자에게 제공된 개인정보라 하더라도, 언제든지 삭제를 요구할 수 있습니다.<br>
+                                    고객님께서는 동의를 거부하실 수 있으며, 동의 거부 시 다양한 상품 및 이벤트 안내 등의 서비스가 제한됩니다.
+                                </div>
+                            </div>
+                            <div class="btnConfirm" data-bs-dismiss="modal">확인</div>
+                        </div><!--//contWin-->
+                </div>
+            </div>
+        </div>
+
+        <!-- JS here -->
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/preloader.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.smoothscroll.min.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.counterup.min.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/jquery.nice-select.min.js"></script>
+        <script type="text/javascript" src="https://nawaracar.com/theme/barit/js/custom.js"></script>
+
+        <script>
+            // JS Logic (keep existing functionality for forms and data submission)
+
+            $(document).ready(function () {
+                // 팝업 열고닫기 - using jQuery show/hide
+                $(".btnViewPolicy, .showPolicyWin, label[for='agree_chk']").on("click", function (e) {
+                    e.preventDefault(); // Prevent default behavior
+                    $("#privacyPopup").show();
+                });
+
+                $("#privacyPopup .btnClosePopup, #privacyPopup .btnConfirm").on("click", function () {
+                    $("#privacyPopup").hide();
+                });
+
+                // 체크설정
+                $("#privacyPopup .checkAll").on("click", function () {
+                    if ($(this).prop("checked") == true) {
+                        $("#privacyPopup .agreeContWrap input[type=checkbox]").prop("checked", true);
+                    } else {
+                        $("#privacyPopup .agreeContWrap input[type=checkbox]").prop("checked", false);
+                    }
+
+                    setParentAgree();
+                });
+
+                $("#privacyPopup .agreeContWrap input[type=checkbox]").on("click", function () {
+                    var allChk = true;
+                    $("#privacyPopup .agreeContWrap input[type=checkbox]").each(function () {
+                        if ($(this).prop("checked") == false) {
+                            allChk = false;
+                        }
+                    });
+
+                    if (allChk == false) {
+                        $("#privacyPopup .checkAll").prop("checked", false);
+                    } else {
+                        $("#privacyPopup .checkAll").prop("checked", true);
+                    }
+
+                    setParentAgree();
+                });
+
+                // Allow checkbox to be checked
+                $(".checkMain").on("click", function (e) {
+                    e.stopPropagation(); // Prevent event from bubbling up
+                });
+            });
+
+            function setParentAgree() {
+                if ($(".agreeChk1").prop("checked") == true && $(".agreeChk2").prop("checked") == true) {
+                    $(".checkMain").prop("checked", true);
+                } else {
+                    $(".checkMain").prop("checked", false);
+                }
+            }
+
+            document.addEventListener('scroll', function () {
+                const scrollPosition = window.scrollY || window.pageYOffset;
+                const sideForms = document.querySelectorAll('.sideForm');
+
+                // Adjust scroll threshold for sideForm visibility based on new content length
+                const scrollThreshold = 100; // Keep side form visible near top
+
+                if (scrollPosition > scrollThreshold) {
+                    sideForms.forEach(function (sideForm) {
+                        sideForm.classList.remove('on');
+                    });
+                } else {
+                    sideForms.forEach(function (sideForm) {
+                        sideForm.classList.add('on');
+                    });
+                }
+            });
+
+            //submit logic from original code (adapted for new form structure)
+            $(document).ready(function () {
+                $("input[name=mphone]").keyup(function (event) {
+                    var inputVal = $(this).val();
+                    $(this).val(inputVal.replace(/[^0-9]/gi, ''));
+                });
+
+                $("#btnSubmitS01")
+                    .off("click.S01")
+                    .on("click.S01", function () {
+                        const frmS01Name = $("#frmS01Name").val();
+                        const phoneMHead = $(".phoneHeadSelector_m").val(); // 앞자리 선택값(010, 011 등)
+                        const phoneMNumber = $("#frmS01Mphone").val(); // 나머지 번호
+                        const frmS01Mphone = phoneMHead + phoneMNumber; // 전체 전화번호 조합
+                        const hasChecked = $("#privacyAgree3").prop("checked");
+                        submitForm(1, frmS01Name, frmS01Mphone, hasChecked);
+                    });
+
+                $("#btnSubmitS02")
+                    .off("click.S02")
+                    .on("click.S02", function () {
+                        const frmS02Name = $("#frmS02Name").val();
+                        const phoneHead = $(".phoneHeadSelector").val(); // 앞자리 선택값(010, 011 등)
+                        const phoneNumber = $("#frmS02Mphone").val(); // 나머지 번호
+                        const frmS02Mphone = phoneHead + phoneNumber; // 전체 전화번호 조합
+                        const hasChecked = $("#privacyAgree2").prop("checked");
+                        submitForm(2, frmS02Name, frmS02Mphone, hasChecked);
+                    });
+
+                $("#btnSubmitS03")
+                    .off("click.S03")
+                    .on("click.S03", function () {
+                        const frmS03Name = $("#frmS03Name").val();
+                        const frmS03Mphone = $("#frmS03Mphone").val();
+
+                        const hasChecked = $("#agree_chk").prop("checked");
+                        submitForm(3, frmS03Name, frmS03Mphone, hasChecked);
+                    });
+
+                //팝업 열고닫기
+                $(".btnViewPolicy, .showPolicyWin").on("click", function () {
+                    $("#privacyPopup").show();
+                });
+                $("#privacyPopup .btnClosePopup, #privacyPopup .btnConfirm").on("click", function () {
+                    $("#privacyPopup").hide();
+                });
+            });
+
+            const paramReferer = '';
+            const paramCampUid = '';
+            const paramUtmMedium = '';
+
+            //기본 데이터 로드
+            function loadData() {
+                const async = $.Deferred();
+                $.ajax({
+                    url: 'https://db.siwoomarketing.com/api/index.php?ctrl=landing.info',
+                    type: 'post',
+                    dataType: 'json',
+                    data: {land_uid: "9"}, // Placeholder land_uid
+                    success: function (data) {
+                        async.resolve(data);
+                    },
+                    error: function (err) {
+                        async.reject(err);
+                    },
+                });
+
+                return async.promise();
+            }
+
+            async function submitForm(formType = 1, userName, userPhone, isChecked = false) {
+                let loadInitData;
+                let param = {};
+
+                let sms_title;
+                let sms_msg;
+                let sms_broadcast;
+                let sms_use_customer;
+                let sms_use_broadcast;
+                let user_id;
+                let land_uid;
+                try {
+                    loadInitData = await loadData();
+                    sms_title = loadInitData["extra"]["config"]["sms_title"];
+                    sms_msg = loadInitData["extra"]["config"]["sms_msg"];
+                    sms_broadcast = loadInitData["extra"]["config"]["sms_broadcast"];
+                    sms_use_customer = loadInitData["extra"]["config"]["sms_use_customer"];
+                    sms_use_broadcast = loadInitData["extra"]["config"]["sms_use_broadcast"];
+                    user_id = loadInitData["extra"]["config"]["user_id"];
+                    land_uid = loadInitData["extra"]["config"]["land_uid"];
+                } catch (e) {
+                    console.log(e);
+                    alert("폼 제출에 실패했습니다. 잠시 후 다시 시도해주세요.");
+                    return;
+                }
+
+                if (!isChecked) {
+                    alert("약관 동의 후 가능합니다.");
+                    const myModal = new bootstrap.Modal(document.getElementById('privacyPopup'));
+                    myModal.show();
+                    return;
+                }
+
+                // 이벤트 SMS 수신 동의 처리
+                let eventSmsFlag = $("#privacyPopup .agreeChk3").prop("checked") ? "Y" : "N";
+                $("input[name=rcv_event_sms]").val(eventSmsFlag);
+
+                // 폼 데이터 직렬
+                let resultData;
+
+                // 성공 처리 방식 설정
+                let successAction = {
+                    url: "/success/complete.php",
+                    showAlert: formType > 0, // 폼2,3만 알림 표시
+                    reload: formType > 0     // 폼2,3만 새로고침
+                };
+
+                param["inqType"] = 2;
+                param["smsTitle"] = sms_title;
+                param["smsMsg"] = sms_msg;
+                param["msgType"] = "mms";
+                param["smsBroadcastNumber"] = sms_broadcast;
+                param["smsSendYN"] = sms_use_customer;
+                param["smsSendBroadcastYN"] = sms_use_broadcast;
+                param["user_id"] = user_id;
+                param["land_uid"] = land_uid;
+
+                //TODO 이벤트 태그
+                param["rcv_event_sms"] = "Y";
+                param["content"] = "";
+                param["returnUrl"] = "";
+                param["refererUrl"] = paramReferer;
+                param["campUid"] = paramCampUid;
+                param["utmMedium"] = paramUtmMedium;
+                param["showCompleteAlertMsg"] = "Y";
+                param["name"] = userName;
+                param["mphone"] = userPhone;
+
+                try {
+                    resultData = await submitFormProc(param);
+                    if (resultData["returnCode"]) {
+                        if (successAction.showAlert) {
+                            alert("신청이 완료되었습니다.");
+                        }
+                        if (successAction.reload) {
+                            document.location.reload();
+                        } else {
+                            document.location.href = successAction.url;
+                        }
+                    } else {
+                        alert(resultData["returnMsg"]);
+                    }
+                } catch (e) {
+                    alert("서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+                    return;
+                }
+
+                return false;
+            }
+
+            function submitFormProc(param) {
+                const async = $.Deferred();
+                // AJAX 요청
+                $.ajax({
+                    url: "https://db.siwoomarketing.com/api/index.php?ctrl=inq.regist",
+                    type: "post",
+                    dataType: "json",
+                    data: param
+                    , success: function (data) {
+                        async.resolve(data);
+                    },
+                    error: function (err) {
+                        async.reject(err);
+                    }
+                });
+                return async.promise();
+            }
+
+            // Real-time list rolling function (if needed) - keep placeholder if original code has it, but focus on content now.
+            function rollRealTimeList() {
+                // Placeholder for real-time list rolling logic
+            }
+        </script>
+      
